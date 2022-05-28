@@ -1,0 +1,9 @@
+.movies-card-container{
+    position:relative;
+    background-color: transparent;
+    top: 10vh;
+}
+
+.movies-card{
+    height: 50vh;
+}

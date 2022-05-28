@@ -1,0 +1,91 @@
+*{
+  margin: 0px;
+}
+.container{
+  height: 600vh;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-attachment:fixed;
+  background-repeat: no-repeat;
+  background-image: url('./assets/images/197-1975100_hollywood-movie-poster-background.jpg');
+
+}
+
+.movies-header{
+ height: 10vh;
+ box-shadow: 3px 3px 10px black;
+ border-bottom-right-radius: 10px;
+ border-bottom-left-radius: 10px;
+ display: flex;
+ position: fixed;
+ top: 0;
+ width: 100vw;
+ justify-content: space-between;
+ align-items: center;
+}
+form{
+  margin-right: 20px;
+}
+.search-input{
+  background-color: transparent;
+  outline: 1px inset black;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px black;
+  transition: all .8s ease-in-out;
+  height: 4vh;
+}
+.search-btn{
+  background-color: black;
+  border:none;
+  position: absolute;
+  right: 20px;
+  height: 4.3vh;
+  border-top-right-radius: 10px;
+  transition:  all .5s ease;
+  border-bottom-right-radius: 10px;
+}
+.search-icon{
+   height: 100%;
+  transform:rotate(-100deg);
+  position: relative;
+}
+.search-btn:hover{
+  cursor: pointer;
+  background-color:gray ;
+}
+.search-input:focus{
+  background-color:black;
+  color: lightgray;
+}
+
+.search-input::placeholder{
+  color:black;
+  font-size: 17px;
+  font-family: cursive;
+  position: relative;
+  left: 3px;
+  top: 1px;
+}
+
+.movies-body{
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ position: relative;
+ overflow: hidden;
+ top:10vh;
+}
+.movies-card{
+ width: 33.3vw;
+ box-shadow: .5px .5px 10px black;
+ display: flex;
+ justify-content: center;
+ border: 1px solid black;
+ margin: 10px;
+}
+
+.movie-poster{
+  width: 25vw;
+  object-fit: cover;
+}
