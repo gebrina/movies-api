@@ -31,7 +31,7 @@ const App = ()=>{
      }
 
       getMovies();
-   },[])
+   },[getMoviesData])
   const searchMovies =async (e)=>{
      e.preventDefault();
      await getMoviesData();
@@ -50,11 +50,11 @@ const App = ()=>{
    </div>
    <div className='movies-body'>
    
-     {moviesData.length>0?moviesData.map((movie)=>{
+     {moviesData?.length>0?moviesData.map((movie)=>{
      return <div className='movies-card'>
                 <div className='movies-title'>
                   <p>{movie.Title}</p>
-                  <img className='movie-poster'  src={movie.Poster}/>
+                  <img alt={movie.Title} className='movie-poster'  src={movie.Poster}/>
                 </div>
         </div>
    }):<p>No match Found</p>}
