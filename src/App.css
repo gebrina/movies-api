@@ -83,9 +83,24 @@ form{
  justify-content: center;
  border: 1px solid black;
  margin: 10px;
+ transition: all .5s ease-in-out;
 }
 
+.movies-card:hover{
+  cursor: pointer;
+  border: .5px solid black;
+  box-shadow: .2px .2px  .2px .2px black;
+}
 .movie-poster{
   width: 25vw;
   object-fit: cover;
+}
+
+.movie-title{
+  text-align: center;
+  color: white;
+  font-size: 4vmin;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-shadow: .5px .5px 5px black;
 }

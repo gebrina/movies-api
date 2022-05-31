@@ -1,13 +1,17 @@
 import './App.css';
 import loupe from './assets/images/loupe.png';
-
+import MoviesDetail from './components/MoviesDetail';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const App = ()=>{
    const [search,setSearch] = useState('');
    const [moviesData,setMoviesData] = useState([]);
-  
+   const [showMoviesDetail,setShowMoviesDetail] = useState(false);
+   const [movieDetailData,setMovieDetailData] = useState({});
+   const toggleMovieDetail = ()=>{
+     setShowMoviesDetail(!showMoviesDetail);
+   }
    const getMoviesData = async ()=>{
      if(search?.length >0){
       try {
@@ -31,13 +35,14 @@ const App = ()=>{
      }
 
       getMovies();
-   },[getMoviesData])
+   },[])
   const searchMovies =async (e)=>{
      e.preventDefault();
      await getMoviesData();
      
   }
-  return <div className='container'>
+  return <>
+     {showMoviesDetail?<MoviesDetail movieData={movieDetailData} toggleMovieDetail={toggleMovieDetail}/>:<div className='container'>
     <div className='movies-container'>
    <div className='movies-header'>
      <h1>Movies</h1>
@@ -50,10 +55,13 @@ const App = ()=>{
    </div>
    <div className='movies-body'>
    
-     {moviesData?.length>0?moviesData.map((movie)=>{
-     return <div className='movies-card'>
+     {moviesData?.length>0?moviesData.map((movie,index)=>{
+     return <div key={index} onClick={()=>{
+       setShowMoviesDetail(true);
+       setMovieDetailData(movie)
+     }} className='movies-card'>
                 <div className='movies-title'>
-                  <p>{movie.Title}</p>
+                  <p className='movie-title'>{movie.Title}</p>
                   <img alt={movie.Title} className='movie-poster'  src={movie.Poster}/>
                 </div>
         </div>
@@ -61,7 +69,8 @@ const App = ()=>{
      
    </div>
   </div>
-  </div>
+  </div>}
+     </>
 }
 
 export default App;

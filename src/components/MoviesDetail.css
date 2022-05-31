@@ -1,0 +1,22 @@
+.back-btn{
+    background-color: gray;
+    border: none;
+    border-radius: 20px;
+    position:fixed;
+    top: 10px;
+    left: 10px;
+}
+
+.back-btn:hover{
+    background-color: rgb(168, 164, 164);
+    cursor: pointer;
+}
+.movie-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.movies-poster{
+    height: 90vh;
+    width: 100%;
+   object-fit: revert;
+}
