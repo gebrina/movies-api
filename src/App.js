@@ -3,12 +3,14 @@ import loupe from './assets/images/loupe.png';
 import MoviesDetail from './components/MoviesDetail';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-
+import {motion} from 'framer-motion';
 const App = ()=>{
    const [search,setSearch] = useState('');
    const [moviesData,setMoviesData] = useState([]);
    const [showMoviesDetail,setShowMoviesDetail] = useState(false);
    const [movieDetailData,setMovieDetailData] = useState({});
+   const [isScrolled,setIsScrolled] = useState(false);
+   
    const toggleMovieDetail = ()=>{
      setShowMoviesDetail(!showMoviesDetail);
    }
@@ -30,6 +32,11 @@ const App = ()=>{
      }
    }
     useEffect(()=>{
+      window.addEventListener('scroll',()=>{
+       if(window.scrollY>100){
+        setIsScrolled(!isScrolled);
+       }
+      })
      const getMovies = async ()=>{
        await getMoviesData();
      }
@@ -44,19 +51,21 @@ const App = ()=>{
   return <>
      {showMoviesDetail?<MoviesDetail movieData={movieDetailData} toggleMovieDetail={toggleMovieDetail}/>:<div className='container'>
     <div className='movies-container'>
-   <div className='movies-header'>
-     <h1>Movies</h1>
+   <div id="movie-header"  className='movies-header'>
+     <h1 className='title'>Movies</h1>
      <form onSubmit={searchMovies}>
       <input type={'text'} 
        onChange={(e)=>setSearch(e.target.value)}
-      placeholder="Search here.." className='search-input'/>
+      placeholder="Type here.." className='search-input'/>
      <button className='search-btn' type='submit'><img className='search-icon'  src={loupe}/></button>
      </form>
    </div>
    <div className='movies-body'>
    
      {moviesData?.length>0?moviesData.map((movie,index)=>{
-     return <div key={index} onClick={()=>{
+     return <motion.div animate={{x:0,y:0}} 
+      transition={{duration:1,type:'tween'}} 
+       initial={{x:index%2==0?-200:200,y:isScrolled?50:-50}} key={index} onClick={()=>{
        setShowMoviesDetail(true);
        setMovieDetailData(movie)
      }} className='movies-card'>
@@ -64,7 +73,7 @@ const App = ()=>{
                   <p className='movie-title'>{movie.Title}</p>
                   <img alt={movie.Title} className='movie-poster'  src={movie.Poster}/>
                 </div>
-        </div>
+        </motion.div>
    }):<p>No match Found</p>}
      
    </div>

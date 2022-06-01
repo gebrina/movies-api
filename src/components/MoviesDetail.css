@@ -16,7 +16,76 @@
     grid-template-columns: 1fr 1fr;
 }
 .movies-poster{
-    height: 90vh;
     width: 100%;
-   object-fit: revert;
+    height: 500px;
+    object-fit: contain;
+    object-position: center;
+}
+.movies-detail{
+    color: white;
+    box-shadow: 1px 1px 5px black;
+    margin:0px 10px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.actor-poster{
+    display: flex;
+}
+
+.actor-poster ul{
+    list-style: none;
+   border: .3px solid black;
+
+   width: 40vw;
+   height: fit-content;
+   width: max-content;
+   box-shadow: 1px 1px 5px   gray;
+}
+.actor{
+    font-size: 20px;
+    color: lightgray;
+    text-shadow: .5px .5px 1px black;
+    text-transform: capitalize;
+
+}
+
+.actor-title{
+    text-shadow: .5px .5px 5px gray;
+}
+.actor:hover{
+    color: white;
+    cursor: pointer;
+}
+.awards{
+    height: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-shadow: .8px .5px 1px red;
+}
+.awards-section{
+    position: relative;
+    
+    top:-105px;
+}
+.award-img{
+    height: inherit;
+}
+
+.movies-description{
+    box-shadow: 1px 1px 10px black;
+  font-size: 1.3rem;
+
+
+}
+.movie-info{
+    box-shadow: 1px 1px 10px black;
+}
+
+.detail-movie-title{
+    text-align: center;
+    text-shadow:1px 1px 4px lightblue;
+    text-transform: uppercase;
+
 }
