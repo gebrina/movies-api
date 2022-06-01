@@ -4,6 +4,7 @@ import MoviesDetail from './components/MoviesDetail';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import {motion} from 'framer-motion';
+import moviebg from './assets/images/197-1975100_hollywood-movie-poster-background.jpg'
 const App = ()=>{
    const [search,setSearch] = useState('');
    const [moviesData,setMoviesData] = useState([]);
@@ -49,9 +50,11 @@ const App = ()=>{
      
   }
   return <>
-     {showMoviesDetail?<MoviesDetail movieData={movieDetailData} toggleMovieDetail={toggleMovieDetail}/>:<div className='container'>
+     {showMoviesDetail?<MoviesDetail movieData={movieDetailData} toggleMovieDetail={toggleMovieDetail}/>
+     :<div className='container' style={{backgroundImage:`url(${moviebg})`}}>
     <div className='movies-container'>
-   <div id="movie-header"  className='movies-header'>
+   <div id="movie-header"  
+   className='movies-header'>
      <h1 className='title'>Movies</h1>
      <form onSubmit={searchMovies}>
       <input type={'text'} 
